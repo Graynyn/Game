@@ -1,4 +1,7 @@
-class Main(Patern):
+import Patern
+import tkinter as tk
+
+class Main(Patern.Patern):
     """ Classe regroupant les info et les methodes nécessaires pour la gestion d'une main """
     #Attribut GAME
     _taille = 7
@@ -15,7 +18,7 @@ class Main(Patern):
         #Racine
         self._root = root
         #Attributs Graphics
-        self.__can = Canvas(self._root._root._fen,bg='red')
+        self.__can = tk.Canvas(self._root._root._fen,bg='red')
         place = 2-(self._root._index - 1)*2 #Emplacement dans la grille du .grid du canvas
-        self.__can.grid(column=1,row=place)
+        self.__can.grid(column=place,row=1)
       
