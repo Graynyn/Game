@@ -1,3 +1,6 @@
+import PIL #Pour la gestion des images #Gregoire
+import ImageTk #idem
+
 class Carte:
     #Attributs
     _nom = "" #0
@@ -11,15 +14,15 @@ class Carte:
     _sprite = None#Sprite de la carte #7
     _dos = None#Sprite du dos de la carte #8
     _proprietaire = None #Ref a un joueur
-    _root = None
-    _peut_attaquer = None
-    _peut_deplacer = None
-    _x = None
-    _y = None
-    _roi = None
+    _root = None 
+    _peut_attaquer = None #Bool True si peut attaquer false sinon
+    _peut_deplacer = None #Bool idem mais pour attaquer
+    _x = None #Placement x de la carte sur le self._terrain._tabl_cards
+    _y = None #Placement y de la carte sur le self._terrain._tabl_cards
+    _roi = None #Bool True si cette carte est le roi de son proprietaire
     _face = None #Face recto => True // Face verso => False
-    _effect_evt = None
-    _effect_name = None
+    _effect_evt = None #On verra pour loa 2.0
+    _effect_name = None #idem
 
     def __init__(self,root,nom,mana,attaque,vie,patern_atk,patern_depl,jeton,sprite,sprite_dos,proprietaire):
         """ Initialisateur de la classe carte """
