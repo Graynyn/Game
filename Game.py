@@ -88,7 +88,7 @@ class Game:
         
     def create_deck_database(self):
         """ Charge la bdd dans les attributs _deck_names et _decks_cards """
-        cnx = sq.connect("Outils_pour_le_jeu/decks.sq3") #On charge la db
+        cnx = sq.connect("decks.sq3") #On charge la db
         curseur = cnx.cursor() #On crée un curseur pour parcourir la db
         curseur.execute("SELECT * FROM deck") #On selectionne toute la db
         datas = curseur.fetchall()#On charge la db dans 'datas'
@@ -104,7 +104,7 @@ class Game:
         """ Creation du tableau contenant toutes les cartes """
         #Idem qu'avec les decks
         self._cards = []
-        cnx = sq.connect("Outils_pour_le_jeu/cartes.sq3")
+        cnx = sq.connect("cartes.sq3")
         curseur = cnx.cursor()
         curseur.execute("SELECT * FROM cartes")
         datas = curseur.fetchall()
