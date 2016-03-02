@@ -1,3 +1,15 @@
+import tkinter as tk
+import sqlite3 as sq
+import Carte
+import Terrain
+import Joueur
+import Click
+import Deck
+import Main
+import Patern
+import Methodes__utiles as mu
+#rayer la mention inutile
+
 class Game:
     """Classe gérant toutes les actions qui ne se rapportent pas directement aux joueurs (messages,etc...)"""
     #Attributs GAME
@@ -18,16 +30,17 @@ class Game:
         """ Initialisateur de la classe Game """
         self.create_card_database() #Charge la db des cartes
         self.create_deck_database() #Charge la db des cartes
-        self._bouton_fin_tour = Button(self._fen,text="Fin du tour",command=self.switch_turn) #Crée le bouton fin de tour
+        self._bouton_fin_tour = tk.Button(self._fen,text="Fin du tour",command=self.switch_turn) #Crée le bouton fin de tour
         self._bouton_fin_tour.grid(column=1,row=3) #Le grid (pack)
         
     def start(self):
         """ Methode qui va etre appelée pour lancer une Game """
         #Creation du terrain
+        self._fen = tk.Tk()
         taille_terrain = 8 #La taille du terrain (modulable)
-        self._terrain = Terrain(taille_terrain,taille_terrain,self.create_terrain_points(taille_terrain),self) #Creation de l'objet terrain
+        self._terrain = Terrain.Terrain(taille_terrain,taille_terrain,self.create_terrain_points(taille_terrain),self) #Creation de l'objet terrain
         #Creation es objets
-        self._click = Click(self) #Creation de l'objet click
+        self._click = Click.Click(self) #Creation de l'objet click
         self._joueurs = [[],[],[]] #Initialisation des joueurs
         #Creation des decks
         self._decks = self.create_deck_database() #
@@ -48,8 +61,8 @@ class Game:
             zones_deploiement1.append([i,taille_terrain-2]) #Pour le joueur 1 : les lignes d'index 6 et 7 (pour un terrain de taille 8)
             zones_deploiement1.append([i,taille_terrain-1])
         #Creation des joueurs
-        self._joueurs[1] = Joueur(1,"Joueur1",d1,[],zones_deploiement1,self)
-        self._joueurs[2] = Joueur(2,"Joueur2",d2,[],zones_deploiement2,self)
+        self._joueurs[1] = Joueur.Joueur(1,"Joueur1",d1,[],zones_deploiement1,self)
+        self._joueurs[2] = Joueur.Joueur(2,"Joueur2",d2,[],zones_deploiement2,self)
         #Creation des cartes es rois
         self._roi_joueur = self.create_card(0,1) #Index + proprietaire
         self._roi_adverse = self.create_card(0,2)
@@ -77,7 +90,7 @@ class Game:
         
     def create_deck_database(self):
         """ Charge la bdd dans les attributs _deck_names et _decks_cards """
-        cnx = sqlite3.connect("Outils_pour_le_jeu/decks.sq3") #On charge la db
+        cnx = sq.connect("Outils_pour_le_jeu/decks.sq3") #On charge la db
         curseur = cnx.cursor() #On crée un curseur pour parcourir la db
         curseur.execute("SELECT * FROM deck") #On selectionne toute la db
         datas = curseur.fetchall()#On charge la db dans 'datas'
@@ -93,7 +106,7 @@ class Game:
         """ Creation du tableau contenant toutes les cartes """
         #Idem qu'avec les decks
         self._cards = []
-        cnx = sqlite3.connect("Outils_pour_le_jeu/cartes.sq3")
+        cnx = sq.connect("Outils_pour_le_jeu/cartes.sq3")
         curseur = cnx.cursor()
         curseur.execute("SELECT * FROM cartes")
         datas = curseur.fetchall()
@@ -115,13 +128,13 @@ class Game:
         sprite = self._cards[index][6]
         jeton = self._cards[index][7]
         sprite_dos = self._cards[index][8]
-        return Carte(self,nom,mana,attaque,vie,patern_atk,patern_mvt,jeton,sprite,sprite_dos,proprietaire) #On retourne la carte avec tous les attributs conformes à la db (on pourrait ainsi créer une nouvelle carte depuis ici dans qu'elle ne figure dans la db si on modifiait le code)
+        return Carte.Carte(self,nom,mana,attaque,vie,patern_atk,patern_mvt,jeton,sprite,sprite_dos,proprietaire) #On retourne la carte avec tous les attributs conformes à la db (on pourrait ainsi créer une nouvelle carte depuis ici dans qu'elle ne figure dans la db si on modifiait le code)
 
     def create_terrain_points(self,taille_terrain):
         """ Creer automatiquement un terrain de points de mana conventionnel """
-        tabl1 = array(taille_terrain,taille_terrain,1) #Methode dans Methodes_utiles (importé au debut du prog) qui crée un tableau de taille 'taille_terrain'*'taille_terrain' de valeur pour chaque case : 1
-        tabl2 = array(taille_terrain/2,taille_terrain/2,1)#meme genre
-        tabl3 = array(2-taille_terrain%2,2-taille_terrain%2,1)#meme genre
+        tabl1 = mu.array(taille_terrain,taille_terrain,1) #Methode dans Methodes_utiles (importé au debut du prog) qui crée un tableau de taille 'taille_terrain'*'taille_terrain' de valeur pour chaque case : 1
+        tabl2 = mu.array(taille_terrain/2,taille_terrain/2,1)#meme genre
+        tabl3 = mu.array(2-taille_terrain%2,2-taille_terrain%2,1)#meme genre
         a = 0
         b = 0
         for j in range(int(taille_terrain/4),int(3*taille_terrain/4)):#On additione le 2e tableau au 1er de facon a ce qu'il soit centré
