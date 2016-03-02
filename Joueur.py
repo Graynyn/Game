@@ -1,3 +1,8 @@
+import Deck
+import Main
+import tkinter as tk
+
+
 class Joueur:
     """ Classe regroupant toutes les informations et les fonctions nécessaires au jeu pour chaque joueur"""
     #Attributs GAME
@@ -23,16 +28,16 @@ class Joueur:
         self._root = root
         #Attributs Game
         self._index = index
-        self._deck = Deck(deck,self)
-        self._main = Main(main,self)
+        self._deck = Deck.Deck(deck,self)
+        self._main = Main.Main(main,self)
         self._nom = nom
         self._mana_max = 0
         self._mana = self._mana_max
         #Attributs Graphics
-        self.__can_mana = Canvas(self._root._fen,bg='red')
+        self.__can_mana = tk.Canvas(self._root._fen,bg='red')
         place = (self._index - 1)*2
         self.__can_mana.grid(column=place,row=0)
-        self.__label_mana = Label(self.__can_mana)
+        self.__label_mana = tk.Label(self.__can_mana)
         self.__label_mana.grid(column=self._index,row=0)
         self._zones_deploiement = zones_deploiement
     
