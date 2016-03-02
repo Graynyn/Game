@@ -1,3 +1,5 @@
+import tkinter as tk
+
 class Click:
     """ Classe gérant les entrées d'informations nottament par la souris """
     """ _creature est est une liste de 2 valeures : les 2 dernieres valeures du click """
@@ -20,6 +22,6 @@ class Click:
         self._root = root
         self._creature = [None,None]
         self._creature_ref = "T"
-        self.__zoom_can = Canvas(self._root._fen,width=self.__zoom_label_width,height=self.__zoom_label_height)
+        self.__zoom_can = tk.Canvas(self._root._fen,width=self.__zoom_label_width,height=self.__zoom_label_height)
         self.__zoom_can.grid(column=3,row=1)
-        self.__zoom_label = Label(self.__zoom_can)
+        self.__zoom_label = tk.Label(self.__zoom_can)
