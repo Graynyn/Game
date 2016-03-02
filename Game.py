@@ -1,3 +1,4 @@
+#J'ai pas pu le tester car ya pas python sur les ordi du cdi donc c'est pas sur que ca fonctionne n'oubliez pas de regarder le readme que j'ai mis dans la branch 1.0 sinon yaura forcement des erreures
 import tkinter as tk
 import Terrain
 import Click
