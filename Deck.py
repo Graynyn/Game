@@ -1,4 +1,6 @@
-class Deck(Patern):
+import Patern
+
+class Deck(Patern.Patern):
     """ Classe regroupant les info et les methodes pour la gestion d'un deck """
 
     def shuffle(self):
