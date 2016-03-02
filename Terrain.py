@@ -12,14 +12,14 @@ class Terrain:
     #Racine
     _root = None
 
-    def color_terrrain(width,height):
+    def color_terrrain(self,widt,height):
         for i in range (width):
             for j in range (height):
                 k=i%2
                 if k ==1:
-                    terrain.label(i,j,bg="AAAAAA")
+                    self.label(i,j,bg="AAAAAA")
                 if k ==0:
-                    terrain.label(i,j,bg="000000")
+                    self.label(i,j,bg="000000")
 
     def __init__(self,width,height,tabl_points,root):
         """ initialisateur de la classe terrain"""
