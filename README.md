@@ -1,3 +1,5 @@
-# Game
-Classe Game
-Attention !!! Pour lancer le projet, il faut absolument créer un dossier 'Image' avec toutes les images des cartes !!! Il se trouve sur le drive à la racine !!!
+Notes du 04/03/2016 :
+Toutes les branches ont fusionnées, on a maintenant une branche nommée 'master' contenant touts les fichiers importants. Vous avez jusqu'au 16/03 pour finir de coder vos parties respectives après ce délais écoulé nous passerons sur la 2.0 alors ne trainez surtout pas !!! Mieux vaut que vos parties soient terminées avant l'heure afin d'être certain que tout se passera bien ! 
+  /\
+ /  \ : ATTENTION : Pour lancer le projet il faut tout télécharger en zip (bouton en haut à droite) ensuite, il vous faudra mettre tous  /    \    ces fichiers dans un même dossier. Enfin, allez sur le Drive et récupérez le dossier 'Images' à la racine et inserez le tel    ______    quel dans votre dossier (surtout laissez les images à l'interieur car le chemin d'acces aux images est "Images/nom_de_l'image"           donc si vous les sortez ca marchera pas. Ainsi quand vous ouvrez votre dossier de jeu vous devez avoir tous ces fichiers + le            dossier Images avec dedans toutes les images qu'il y avait à l'origine.
+
