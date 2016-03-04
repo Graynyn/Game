@@ -20,5 +20,11 @@ class Main(Patern.Patern):
         #Attributs Graphics
         self.__can = tk.Canvas(self._root._root._fen,bg='red')
         place = 2-(self._root._index - 1)*2 #Emplacement dans la grille du .grid du canvas
-        self.__can.grid(column=place,row=1)
+        self.__can.grid(column=1,row=place)
+    def display(self): #Pour gregoire
+        pass
+    def refresh(self): #Pour gregoire
+        pass
+    def reverse(self): #Pour gregoire
+        pass
       

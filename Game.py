@@ -1,14 +1,13 @@
+#J'ai pas pu le tester car ya pas python sur les ordi du cdi donc c'est pas sur que ca fonctionne n'oubliez pas de regarder le readme que j'ai mis dans la branch 1.0 sinon yaura forcement des erreures
 import tkinter as tk
-import sqlite3 as sq
-import Carte
 import Terrain
-import Joueur
 import Click
-import Deck
+import Carte
 import Main
-import Patern
-import Methodes__utiles as mu
-#rayer la mention inutile
+import Deck
+import Joueur
+import sqlite3 as sq
+import Methodes_utiles as mu
 
 class Game:
     """Classe gérant toutes les actions qui ne se rapportent pas directement aux joueurs (messages,etc...)"""
@@ -36,7 +35,6 @@ class Game:
     def start(self):
         """ Methode qui va etre appelée pour lancer une Game """
         #Creation du terrain
-        self._fen = tk.Tk()
         taille_terrain = 8 #La taille du terrain (modulable)
         self._terrain = Terrain.Terrain(taille_terrain,taille_terrain,self.create_terrain_points(taille_terrain),self) #Creation de l'objet terrain
         #Creation es objets
@@ -170,3 +168,6 @@ class Game:
             self.tour_joueur(2)
         else:# Sinon, on fait l'inverse
             self.tour_joueur(1)
+            
+game = Game()
+game.start()

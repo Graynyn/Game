@@ -1,6 +1,7 @@
+import tkinter as tk
 import Deck
 import Main
-import tkinter as tk
+
 
 
 class Joueur:
@@ -55,14 +56,17 @@ class Joueur:
             self._main.refresh() #Refresh graphique
         else:
             print("plus de cartes dans le deck") #Animation ou message dans une boite de dialogue
-            
+
+    def refresh_can_mana(self): #Pour gregoire
+        pass
+    
     def focus_roi(self,roi):
         """Change le focus sur fu roi du joueur """
         if self._roi != None: #Si il n'y a pas encore de roi pour ce joueur on peut se passer de cette phase (optimisation)
             self._roi._roi = False #On met a jour l'indicateur dans l'objet carte de l'ancienne carte roi
         self._roi = roi
         self._roi._roi = True #On met a jour l'attribut GAME de la carte de roi
-        
+    
     def get_mana(self):
         """ Met a jour la mana max en fonction de l'emplacement du roi sur le terrain """
         self._mana_max = self._root._terrain._tabl_points[self._roi._x][self._roi._y] #On met la mana du joueur à la valeur du tableau de points de mana du terrain sur la case sur laquelle se trouve le roi de ce joueur
